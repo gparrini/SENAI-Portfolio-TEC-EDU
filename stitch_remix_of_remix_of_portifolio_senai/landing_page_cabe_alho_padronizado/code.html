@@ -1,0 +1,330 @@
+<!DOCTYPE html><html class="light" lang="pt-br" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SENAI TechPort - Dashboard</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-fixed": "#191c1e",
+                "inverse-primary": "#ffb5a1",
+                "surface-container-highest": "#d9e3fb",
+                "on-primary": "#ffffff",
+                "secondary": "#3d5aaa",
+                "surface-container-lowest": "#ffffff",
+                "error": "#ba1a1a",
+                "surface": "#f9f9ff",
+                "secondary-fixed-dim": "#b4c5ff",
+                "on-surface": "#111c2d",
+                "surface-container": "#e8eeff",
+                "background": "#f9f9ff",
+                "inverse-surface": "#273143",
+                "on-surface-variant": "#5a413a",
+                "primary-fixed-dim": "#ffb5a1",
+                "surface-tint": "#b22c00",
+                "surface-dim": "#d0daf2",
+                "on-secondary-fixed-variant": "#224291",
+                "on-secondary-container": "#183a89",
+                "on-primary-fixed": "#3b0800",
+                "on-error-container": "#93000a",
+                "on-background": "#111c2d",
+                "primary-container": "#c4380d",
+                "secondary-container": "#8ca8fe",
+                "on-secondary": "#ffffff",
+                "surface-container-low": "#f0f3ff",
+                "on-primary-container": "#ffe7e2",
+                "on-secondary-fixed": "#00174b",
+                "inverse-on-surface": "#ecf0ff",
+                "surface-container-high": "#dfe8ff",
+                "primary": "#9d2600",
+                "on-tertiary": "#ffffff",
+                "surface-variant": "#d9e3fb",
+                "on-tertiary-container": "#eaecef",
+                "surface-bright": "#f9f9ff",
+                "tertiary-fixed": "#e0e3e6",
+                "secondary-fixed": "#dbe1ff",
+                "outline-variant": "#e3bfb5",
+                "outline": "#8e7068",
+                "tertiary-fixed-dim": "#c4c7ca",
+                "on-tertiary-fixed-variant": "#44474a",
+                "tertiary": "#505356",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#686b6e",
+                "on-primary-fixed-variant": "#882000",
+                "on-error": "#ffffff",
+                "primary-fixed": "#ffdbd1"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-lg": "32px",
+                "sidebar-width": "280px",
+                "container-padding": "24px",
+                "stack-md": "16px",
+                "max-content-width": "1280px",
+                "gutter": "20px",
+                "stack-sm": "8px"
+        },
+        "fontFamily": {
+                "headline-md": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "display-lg-mobile": ["Plus Jakarta Sans"],
+                "body-sm": ["Plus Jakarta Sans"],
+                "headline-sm": ["Plus Jakarta Sans"],
+                "display-lg": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+        }
+    },
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pipeline-column {
+            min-width: 320px;
+            max-width: 320px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e3bfb5;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f0f3ff;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface">
+<!-- SideNavBar -->
+<!-- Main Content Area -->
+<main class="min-h-screen flex flex-col items-center">
+<!-- TopAppBar Unified Component -->
+<header class="fixed top-0 left-0 w-full h-20 bg-surface border-b border-outline-variant flex justify-between items-center px-container-padding z-40"><div class="flex items-center gap-8"><div class="flex items-center"><img alt="SENAI Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB9JtTMEAfFR5hzBSkIxiKbOiUXdNZAkCfq3QG1Jtd5BLqbQsfDiu8EZl9tkLVpbzPZNOwvXCqCK68sKajt39MAqz-N0Gp5yHq2Na7GqnAiTynz-UC9aU4ZDWyolFj037gLxPDNkDAVdKN7LS3xbZyYJIYo9IX4B0h9JPxzJdqqfKoTkJYhaUZIwfq3JSvsOIJZGzouKmtFHxOyiL0hkfCHY4UjWwCgVP5UQCWtPDRpJNCTcpWuIkG02CTgEfliq8gBpKsHi22Uuw"></div><div class="h-6 w-px bg-outline-variant hidden lg:block"></div><h2 class="font-headline-sm text-on-surface font-bold hidden lg:block">Portfólio de Tecnologias</h2></div><div class="flex-1 max-w-xl mx-8"><div class="relative flex items-center w-full rounded-full bg-surface-container-low border border-outline-variant px-4 focus-within:ring-2 focus-within:ring-primary"><span class="material-symbols-outlined text-on-surface-variant">search</span><input class="bg-transparent border-none focus:ring-0 w-full py-2 font-body-md text-on-surface" placeholder="Pesquisar tecnologia..." type="text"></div></div><div class="flex items-center"><button class="px-8 py-2 rounded-full bg-primary text-on-primary font-label-md hover:opacity-90 shadow-sm transition-all">Login</button></div></header>
+<!-- Pipeline Canvas -->
+<section class="pt-28 px-container-padding mb-6 w-full max-w-max-content-width mx-auto">
+<div class="relative overflow-hidden rounded-2xl bg-primary-container min-h-[280px] flex flex-col md:flex-row items-center">
+<div class="flex-1 p-stack-lg z-10">
+<h1 class="font-display-lg text-display-lg text-on-primary-container mb-4">
+        Inovação que Transforma o Futuro
+      </h1>
+<p class="font-body-lg text-body-lg text-on-primary-container/90 max-w-xl">
+        O compromisso do SENAI com a tecnologia educacional impulsiona a excelência industrial e prepara profissionais para os desafios da indústria 4.0.
+      </p>
+<button class="mt-8 bg-surface-container-lowest text-primary px-8 py-3 rounded-lg font-label-md hover:bg-on-primary-container hover:text-primary-container transition-all shadow-md">
+        Conheça nossos Projetos
+      </button>
+</div>
+<div class="flex-1 h-full w-full relative">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container to-transparent z-10"></div>
+<img alt="SENAI Inovação" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0zyhf1QjrsD3FCX_7XI13qXpoHb26ddpin0N9nGZpJJpsi6tS24fojAzqp_B_ZWBFMlor4-pXj3Y_SaVGnqltzoNLMf3g7a57yp_WjO6yNCzCl2ENM2fjr4SvKLF_9mUqadDMwRH2qIuw8qNvrKSwgkeU2BPrJwOtl9Ot9Jr897jjC1suVoNuhNbGPudD7mavOgSH-NP3GQjRqb8pdjhQpgcQA1BWMP1x3C_IX3NHSwi7VJQkSxDjUgCEJqKmzq2L6G6Jj4ei2BU">
+</div>
+</div>
+<!-- Quick Filters Section -->
+<div class="mt-8 flex flex-wrap items-center gap-4 py-4 border-b border-outline-variant">
+<span class="font-label-md text-on-surface-variant mr-2">Filtrar por:</span>
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-on-surface hover:bg-surface-container transition-colors">
+        Categoria <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-on-surface hover:bg-surface-container transition-colors">
+        Status <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary-container rounded-full text-xs font-bold transition-all">Todos</button>
+<button class="px-3 py-1.5 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold hover:bg-outline-variant transition-all">Realidade Virtual</button>
+<button class="px-3 py-1.5 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold hover:bg-outline-variant transition-all">Simuladores</button>
+<button class="px-3 py-1.5 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold hover:bg-outline-variant transition-all">IA &amp; Chatbots</button>
+</div>
+</div>
+</section>
+<div class="pb-stack-lg px-container-padding w-full max-w-max-content-width mx-auto">
+<!-- Header Stats Section -->
+<div class="mb-10 flex justify-between items-end">
+<div>
+<h3 class="font-display-lg text-display-lg text-on-surface mb-2">Pipeline de Desenvolvimento</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Monitore produtos educacionais em todos os estágios do ciclo de vida.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-center gap-4 shadow-sm min-w-[180px]">
+<div class="p-3 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container">rocket_launch</span>
+</div>
+<div>
+<span class="block font-label-md text-label-md text-on-surface-variant">Total de Techs</span>
+<span class="block font-headline-sm text-headline-sm text-secondary">24</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-center gap-4 shadow-sm min-w-[180px]" style="transform: translateY(0px);">
+<div class="p-3 bg-primary-fixed text-primary rounded-lg">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<div>
+<span class="block font-label-md text-label-md text-on-surface-variant">Crescimento</span>
+<span class="block font-headline-sm text-headline-sm text-primary">+12%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pipeline Board -->
+<div class="flex gap-6 overflow-x-auto pb-8 custom-scrollbar">
+<!-- Stage: Ideation -->
+<div class="pipeline-column flex flex-col gap-6 flex-shrink-0">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer group border-t-4 border-t-on-tertiary-fixed-variant relative" style="transform: translateY(0px);">
+<img alt="AR Welding" class="w-full h-40 object-cover rounded-lg mb-4 grayscale group-hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY1GmCqdaXx53dOpS1PS_z6OpIs3r1Acyu74pWVyjzd5MpeFSM_D0BI2Lnb4iaJSEuEFyrycvoC9p7aq9VClmsbjpWHEy_ftCt5iW12rURK5OooWz_w02JFlQvciiQmTyIZJYpZtaS0rbLfSOtnvIHF3yJNjlpS1wB1bUQUqD6WrJJJhxXqzhOCQkigE6BiLqnfPwp4UPzvgCMkNw14FldaVzF4EiGvgUAZissv70qpERfNy21fxVMATvd53Cii-RfQU7tF8Gybgs">
+<div class="inline-block px-2 py-0.5 mb-2 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-wider rounded">Ideação</div><h5 class="font-headline-sm text-[16px] text-on-surface mb-3 leading-snug font-bold">Realidade Aumentada para Soldagem</h5>
+<div class="flex items-center gap-2 text-on-surface-variant mt-auto">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-xs">Adicionado há 2 dias</span>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer group border-t-4 border-t-on-tertiary-fixed-variant relative" style="transform: translateY(0px);">
+<img alt="CLP Mobile" class="w-full h-40 object-cover rounded-lg mb-4 grayscale group-hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyhM6IhwsEZPAdKKhavOs1yrZyKNOt4n6JYqxpawmIRpEEWUCyetdTAZur27vmcI7r-p6Msw9j52auDYYjyXWluktENJJQu2KRWgArWa2COu3Zo0qKBGt8lfU90bxaW174kEeUmOtwrdFtWrsoHdMWa90fl41SOwnH3ujK9GzBczETXQPy6S5OFwx8wkSB0TFf4nuIa4cgqz2LZeS-PM14jdwQRzzD4lMXS_7zcpvNEPVhSRpxLbUfzC6gGSH1w9jSicWKK6ToaPk">
+<div class="inline-block px-2 py-0.5 mb-2 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-wider rounded">Ideação</div><h5 class="font-headline-sm text-[16px] text-on-surface mb-3 leading-snug font-bold">Simulador de CLP Mobile</h5>
+<div class="flex items-center gap-2 text-on-surface-variant mt-auto">
+<span class="material-symbols-outlined text-[18px]">account_circle</span>
+<span class="text-xs">Time: Prototyping</span>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+</div>
+<!-- Stage: Development -->
+<div class="pipeline-column flex flex-col gap-6 flex-shrink-0">
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer border-t-4 border-t-secondary relative" style="transform: translateY(0px);">
+<img alt="Digital Twins" class="w-full h-40 object-cover rounded-lg mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAnJG8YY1eNEkFksmwm2veobQd2YbmQMP0P3XGGnWnwUSpeecaYdTEnEucTRUQugc3mXP5N2YKtiePRVbw5sqafQKskMGtAb-M8Y7QF6bL9NNJILmhTiIVfi3gndAvwLW3JEtH9Tbw9q-MtWGBSvoq5uLwhTvoFnMg_QcV0Mp2Vb0aatLSMX4Q3UzkoHTB3kAksYMU6OIUMrKiqWXrfEnLdlXlciuPolKnp7DCD7x-fWeO8ju-OtflpFT_IsqVm7kMqQ5lNgwZQMY">
+<div class="inline-block px-2 py-0.5 mb-2 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded">Desenvolvimento</div><h5 class="font-headline-sm text-[16px] text-on-surface mb-4 leading-snug font-bold">Gêmeos Digitais Indústria 4.0</h5>
+<div class="space-y-2 mt-auto">
+<div class="flex justify-between text-[11px] font-bold text-on-surface-variant">
+<span class="">Progresso</span>
+<span class="">60%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-1000" style="width: 60%"></div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer border-t-4 border-t-secondary relative" style="transform: translateY(0px);">
+<img alt="Docente Chatbot" class="w-full h-40 object-cover rounded-lg mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyM9jHAW0mvd-oBc1CF7vE8Xjx7uXSQwCHNRUtGK3_tnvL3S48T9Z4kzSfBKJ38aGBc8aPdoPP2oXmmt8PcIsPtxHItBOdQR3WS0lpHMAw5MOENT8YIGW4yjMqdczFb94cDJCQ8oGrb_FVAi26Y7BObrqDmrSki2pPJjKOJa5GnezJ7CkFVZe5aINZwv6mGQwvDQtN3RfozF1blgmciGW_blJXnPX6s0ZPeqb2W3TY1D5VecFZAIpuLlMlHKyKjpN1BFfrKQ55kw8">
+<div class="inline-block px-2 py-0.5 mb-2 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded">Desenvolvimento</div><h5 class="font-headline-sm text-[16px] text-on-surface mb-4 leading-snug font-bold">Chatbot de Apoio ao Docente</h5>
+<div class="flex items-center -space-x-2 mt-auto">
+<img alt="User" class="w-7 h-7 rounded-full border-2 border-surface-container-lowest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQMFIA3TG0a9mJRg9SJZjeYB4R3pKpOmDCOXDxgJKE6gm7qn7Z-ZeqT_rv-7sH8t0m7_LmgpjdcJQIiMYgzISfD1cR6baFpqhrsb8wzRBTblT6FIZM-VwqhmE1FQSyDNs0OiJp4KFntpGH6nPsz0ReIXWKd-EZ2PWBGSXbwv29JIAE65xvVLocJ345ZARPm2CWyhNGN8Tnhms0AW-BsHS9FGG6nP2z_MMoemhEgG_CTqG3NpnFNMw-4XwCqXZsuXN0yIQuf2GEOdM">
+<img alt="User" class="w-7 h-7 rounded-full border-2 border-surface-container-lowest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvs9lY6QnetEmcSlJmb_98si7wO26gImG19RvJdiDqyWP771AxjXEWHth5dJd3-kBRiRu_c5KGCki1mRes7OTs2Dv7GVZqt0XYK6cubIfoNVanzYqVin_3jSMZGLI2pA1D_sEsNfiguk87gXl8OCOtvL7sMAiUf-JXlnXhUNrrtJqO2D7OS6Slk2ev72zQqxTnqj16v_uF8d8GbyVag_JD9BIWvpdIaxQSAWyZPaEqDL1S9PJq-a_UjrZdEEc9g6Le8hXVjRdm05c">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest border-2 border-surface-container-lowest flex items-center justify-center text-[9px] font-bold">+3</div>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+</div>
+<!-- Stage: Production -->
+<div class="pipeline-column flex flex-col gap-6 flex-shrink-0">
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer border-t-4 border-t-primary relative" style="transform: translateY(0px);">
+<img alt="AVA 3.0" class="w-full h-40 object-cover rounded-lg mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU9r8PItGqzWCYCjTkobiQTOGUTPL0UItlfn2DUa1ofR_FZu9CK5l9HnrJ03BtRAU6a5HWvMusvdhyv7g4f89tqtyQ0iJu_ol3BqhjzZtNwtVjhGVRGkYT45V3YNghhOmqiEOByX4Orl6T-XUGn8RXjTKDX8BuCyLvVy7Z3FWymoJw0MlA9GwuPLx4mtn1z8UDn4PrIPrD1312cQ9RGLs0P5tHLxYXNoJJeSjssUbUVcmd74UXBZ7wmdkQBI4SHgOOKotbzcizEUg">
+<div class="inline-block px-2 py-0.5 mb-2 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded">Produção</div><h5 class="font-headline-sm text-[16px] text-on-surface mb-3 leading-snug font-bold">Ambiente Virtual de Aprendizagem 3.0</h5>
+<div class="flex items-center gap-3 py-3 border-y border-outline-variant my-4 mt-auto">
+<div class="flex-1">
+<span class="block text-[10px] uppercase font-bold text-on-surface-variant mb-1">Usuários</span>
+<span class="block font-bold text-primary text-sm">12.4k</span>
+</div>
+<div class="flex-1 text-right">
+<span class="block text-[10px] uppercase font-bold text-on-surface-variant mb-1">Uptime</span>
+<span class="block font-bold text-primary text-sm">99.9%</span>
+</div>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer border-t-4 border-t-primary relative" style="transform: translateY(0px);">
+<img alt="Remote Labs" class="w-full h-40 object-cover rounded-lg mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrEEhb6dLw7hmUQVcQmzOVoiWRPECgSsvOH5pqGm77GSClnQ70NBJLsq08hxdxCyF7aMUZE2diDow1-QPpgvw2QsNRV35THI8pPzG7KonC1JtADsB_lrkJU1BmHpd6aZ076dMO-HprC-lxy-CHbdq2__-Xbq_yhEw9wa9MHPxf7O4ZiUtVppZ0sNWshaBVs8KOwPVK5vJ7SrSTc84d1qwI2PuVcWvsJ8Lyr7O8DGFE7vPQFbxF_mLO1QRcMcVKKUHYixRR_7sub6A">
+<div class="inline-block px-2 py-0.5 mb-2 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-wider rounded">Produção</div><h5 class="font-headline-sm text-[16px] text-on-surface mb-3 leading-snug font-bold">Laboratórios Remotos de Eletrônica</h5>
+<div class="flex items-center gap-2 text-on-surface-variant mt-auto">
+<span class="material-symbols-outlined text-[18px] text-primary">verified</span>
+<span class="text-xs font-bold text-on-surface">Pronto para Lançamento</span>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+</div>
+<!-- Stage: Evolution -->
+<div class="pipeline-column flex flex-col gap-6 flex-shrink-0">
+<!-- Card 7 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer border-t-4 border-t-secondary-fixed relative" style="transform: translateY(0px);">
+<div class="w-full h-40 rounded-lg mb-4 bg-gradient-to-br from-primary-container to-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-6xl">workspace_premium</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider shadow-sm z-20">EVOLUÇÃO</div>
+<h5 class="font-headline-sm text-[16px] text-on-surface mb-3 leading-snug font-bold">Plataforma de Microcertificação</h5>
+<div class="p-3 bg-surface-container-low rounded-lg text-xs text-on-surface-variant mt-auto">
+                        Atualizando arquitetura de contratos inteligentes para integração Blockchain.
+                    </div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+<!-- Card 8 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg transition-all cursor-pointer border-t-4 border-t-secondary-fixed relative" style="transform: translateY(0px);">
+<img alt="VR Simulator" class="w-full h-40 object-cover rounded-lg mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSw5tIpIMpAi_Zc4OD5jm165AFMl8UYC9sBjkD-rRFcjuOt-XzIpHJwoahzG93i1hKsK-p-DqUr08UykNM7nlnC8_mcKGpdWVx2EDYHK7gfykk9NlGTC0wTRE7ugp2N-_-z2EHAp_mu75ZCHbZJp2hOPWyXYoVz3PZEFNDg5rkQuHtHsEfEhLxR4MTvqyeJcn6XJqR6eD4ojUGZXQULsXCnBHFKMoBGI3NaCfiE3gbJgea1T7a8YeZALk9VOTR_XQ4VOe1lvHnOFk">
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider shadow-sm z-20">EVOLUÇÃO</div>
+<h5 class="font-headline-sm text-[16px] text-on-surface mb-4 leading-snug font-bold">Simulador VR de Manutenção Automotiva</h5>
+<div class="flex items-center justify-between text-xs font-bold text-on-surface-variant pt-3 border-t border-outline-variant mt-auto">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">grade</span> 4.8 / 5.0</span>
+<span class="text-primary hover:underline transition-all">Ver backlog</span>
+</div>
+<button class="w-full mt-4 py-2 border border-primary text-primary font-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all text-sm">Saber Mais</button></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.bg-surface-container-lowest.rounded-xl');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-6px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Horizontal scroll with wheel
+        const board = document.querySelector('.custom-scrollbar');
+        if (board) {
+            board.addEventListener('wheel', (evt) => {
+                if (evt.deltaY !== 0) {
+                    evt.preventDefault();
+                    board.scrollLeft += evt.deltaY;
+                }
+            });
+        }
+    });
+</script>
+</body></html>

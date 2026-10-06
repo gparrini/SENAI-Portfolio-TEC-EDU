@@ -1,0 +1,393 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Relatório de Uso Tecnológico | Portal SENAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#44474a",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "on-secondary-fixed-variant": "#224291",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#273143",
+                        "primary": "#c4380d",
+                        "surface-variant": "#d9e3fb",
+                        "on-secondary-fixed": "#00174b",
+                        "secondary-fixed": "#dbe1ff",
+                        "secondary-container": "#8ca8fe",
+                        "on-primary-fixed": "#3b0800",
+                        "surface-tint": "#b22c00",
+                        "inverse-primary": "#ffb5a1",
+                        "on-surface-variant": "#5a413a",
+                        "surface-container-high": "#dfe8ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#111c2d",
+                        "inverse-on-surface": "#ecf0ff",
+                        "primary-fixed": "#ffdbd1",
+                        "primary-container": "#c4380d",
+                        "on-primary-container": "#ffe7e2",
+                        "background": "#f9f9ff",
+                        "outline": "#8e7068",
+                        "on-secondary-container": "#183a89",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d0daf2",
+                        "secondary": "#3d5aaa",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-low": "#f0f3ff",
+                        "outline-variant": "#e3bfb5",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d9e3fb",
+                        "on-tertiary-container": "#eaecef",
+                        "on-background": "#111c2d",
+                        "primary-fixed-dim": "#ffb5a1",
+                        "tertiary-container": "#686b6e",
+                        "tertiary-fixed": "#e0e3e6",
+                        "tertiary": "#505356",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#882000",
+                        "surface-container": "#e8eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "280px",
+                        "stack-md": "16px",
+                        "gutter": "20px",
+                        "stack-sm": "8px",
+                        "max-content-width": "1280px",
+                        "container-padding": "24px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e3bfb5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width z-50 flex flex-col py-6 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-tertiary">
+<div class="px-6 mb-8"><img alt="SENAI Logo" class="h-10 mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmCpJJ7AV0rhPDlKU_ZLswajdplzznw4CKKH8fMbUUMp4SddujPEkEEye3iidUMR5_5SsZ2wLy54ab9yZ0tUhDyBaXHj_JenwXBXqnsZlvUcYx3Or5yqJQh5OoKmzoHVNrEFbDBs0LT_UZDby9pyCxD8IVRkLZ3kYP9CqegVMNs-hf1tZq-vxEfgYEnSCaEfS2SdFpKLhPIeQdG8xT11YvlltA2JiQlDj9ZhWH_Rvnsw-5I6QzVNxGrqSE14iNGePEmQHNLPf9xFE"><p class="text-body-sm font-semibold text-primary">Tecnologias Educacionais</p></div>
+<nav class="flex-1 space-y-1 px-2"><a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-4 hover:bg-surface-container-high dark:hover:bg-tertiary-container rounded-r-full transition-all" href="#"><span class="material-symbols-outlined">dashboard</span><span class="text-label-md font-label-md">Painel</span></a><a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-4 hover:bg-surface-container-high dark:hover:bg-tertiary-container rounded-r-full transition-all" href="#"><span class="material-symbols-outlined">inventory_2</span><span class="text-label-md font-label-md">Portfólio</span></a><a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant py-3 px-4 hover:bg-surface-container-high dark:hover:bg-tertiary-container rounded-r-full transition-all" href="#"><span class="material-symbols-outlined">rebase_edit</span><span class="text-label-md font-label-md">Ciclo de Vida</span></a><a class="flex items-center gap-3 bg-primary-container text-on-primary-container border-l-4 border-primary rounded-r-full py-3 px-4" href="#"><span class="material-symbols-outlined">analytics</span><span class="text-label-md font-label-md font-bold">Relatórios</span></a></nav>
+<div class="mt-auto px-4 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container-high rounded-r-full transition-all" href="#">
+<span class="material-symbols-outlined">help_center</span>
+<span class="text-label-md font-label-md">Central de Ajuda</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container-high rounded-r-full transition-all" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="text-label-md font-label-md">Sair</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-gutter bg-surface dark:bg-inverse-surface h-16 ml-sidebar-width w-[calc(100%-280px)] border-b border-outline-variant dark:border-tertiary"><div class="flex items-center gap-4"><nav class="flex items-center gap-2 text-body-sm text-on-surface-variant"><span class="">Relatórios</span><span class="material-symbols-outlined text-xs">chevron_right</span><span class="text-primary font-bold">Uso da Tecnologia</span></nav></div><div class="flex-1 max-w-xl px-12"><div class="relative flex items-center bg-surface-container-highest rounded-full px-4 py-2"><span class="material-symbols-outlined text-on-surface-variant text-lg">search</span><input class="bg-transparent border-none focus:ring-0 text-body-sm w-full ml-2" placeholder="Buscar tecnologia..." type="text"></div></div><div class="flex items-center gap-6"><button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container p-2 rounded-full">notifications</button><button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container p-2 rounded-full">help_outline</button><div class="flex items-center gap-3 ml-2 border-l border-outline-variant pl-4"><div class="text-right"><p class="text-label-md font-bold text-on-surface leading-none">Admin User</p><p class="text-body-sm text-on-surface-variant">Gestor de TI</p></div><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJBH1hqQSjWndA5Y9GHUFzVvoCNLskc5eW2wlt8Zg0751qU9N1mrXN1Z99_RRL5kqRrMhXm0iuURQ6li-oog0uaC-Qrw81fKoRPeMaWC1TmS6xRW54x2pcH4YliMMWAfJr3t4qNACByo9rIyPzPuXIUoYxBxBobNx7jVyb-J_il61MK-xuR3uVrd9wCzF6jBvLi6mH7Enq2K28S2h8qTli1vv0ALlKF9e34k11t10114A3-behNOIK_twgyGxiCBGgixjyOlhuH_8" class="w-10 h-10 rounded-full object-cover" alt="User Avatar"></div></div></header>
+<!-- Main Content -->
+<main class="ml-sidebar-width p-gutter max-w-max-content-width mx-auto">
+<!-- Page Header & Filter -->
+<section class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+
+<h2 class="text-display-lg font-display-lg text-on-surface">Análise de Uso da Tecnologia</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-2.5 pr-10 text-body-md font-semibold text-on-surface focus:border-primary focus:ring-0 cursor-pointer">
+<option>Simulador de Solda VR v2.4</option>
+<option>Laboratório Virtual de Química</option>
+<option>Portal de E-learning SENAI</option>
+<option>Gestor de Práticas 4.0</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<button class="bg-surface-container-lowest border border-outline-variant p-2.5 rounded-xl flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+</button>
+<button class="bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-body-md flex items-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Exportar PDF
+                </button>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-stack-lg">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-2xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg">touch_app</span>
+<span class="text-label-md text-green-600 bg-green-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> 12.5%
+                    </span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Total de Acessos</p>
+<h3 class="text-headline-md font-bold text-on-surface">42.890</h3>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-2xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary bg-secondary-container/20 p-2 rounded-lg">timer</span>
+<span class="text-label-md text-red-600 bg-red-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_down</span> 2.1%
+                    </span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Tempo Médio de Sessão</p>
+<h3 class="text-headline-md font-bold text-on-surface">18m 42s</h3>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-2xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary bg-tertiary-fixed/20 p-2 rounded-lg">group</span>
+<span class="text-label-md text-green-600 bg-green-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> 8.4%
+                    </span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Usuários Ativos (Mensal)</p>
+<h3 class="text-headline-md font-bold text-on-surface">5.120</h3>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-2xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg">autorenew</span>
+<span class="text-label-md text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">horizontal_rule</span> 0.0%
+                    </span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Taxa de Retenção</p>
+<h3 class="text-headline-md font-bold text-on-surface">82.4%</h3>
+</div>
+</section>
+<!-- Main Analytics Area -->
+<div class="bento-grid">
+<!-- Engagement Over Time (Line Chart) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-2xl p-6">
+<div class="flex justify-between items-center mb-8">
+<h4 class="text-headline-sm font-bold text-on-surface">Evolução de Uso</h4>
+<div class="flex gap-2">
+<button class="text-body-sm px-3 py-1 bg-primary text-white rounded-lg font-semibold">Dia</button>
+<button class="text-body-sm px-3 py-1 hover:bg-surface-container rounded-lg font-semibold transition-colors">Semana</button>
+<button class="text-body-sm px-3 py-1 hover:bg-surface-container rounded-lg font-semibold transition-colors">Mês</button>
+</div>
+</div>
+<div class="h-64 flex flex-col justify-between relative">
+<div class="absolute inset-0 flex items-end justify-between px-2 opacity-20">
+<div class="w-2 bg-primary rounded-t-full h-1/4"></div>
+<div class="w-2 bg-primary rounded-t-full h-1/3"></div>
+<div class="w-2 bg-primary rounded-t-full h-1/2"></div>
+<div class="w-2 bg-primary rounded-t-full h-2/3"></div>
+<div class="w-2 bg-primary rounded-t-full h-3/4"></div>
+<div class="w-2 bg-primary rounded-t-full h-1/2"></div>
+<div class="w-2 bg-primary rounded-t-full h-2/3"></div>
+<div class="w-2 bg-primary rounded-t-full h-full"></div>
+<div class="w-2 bg-primary rounded-t-full h-4/5"></div>
+<div class="w-2 bg-primary rounded-t-full h-2/3"></div>
+<div class="w-2 bg-primary rounded-t-full h-3/4"></div>
+<div class="w-2 bg-primary rounded-t-full h-5/6"></div>
+</div>
+<svg class="w-full h-full overflow-visible z-10" viewBox="0 0 800 256">
+<path d="M0,180 C100,200 200,100 300,120 S500,50 600,80 S700,20 800,40" fill="none" stroke="#c4380d" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="300" cy="120" fill="#c4380d" r="6" stroke="white" stroke-width="2"></circle>
+<circle cx="600" cy="80" fill="#c4380d" r="6" stroke="white" stroke-width="2"></circle>
+<circle cx="800" cy="40" fill="#c4380d" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between text-body-sm text-on-surface-variant mt-4">
+<span class="">Jan</span><span class="">Fev</span><span class="">Mar</span><span class="">Abr</span><span class="">Mai</span><span class="">Jun</span><span class="">Jul</span><span class="">Ago</span><span class="">Set</span><span class="">Out</span><span class="">Nov</span><span class="">Dez</span>
+</div>
+</div>
+</div>
+<!-- Profile Distribution (Bar Chart) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-2xl p-6">
+<h4 class="text-headline-sm font-bold text-on-surface mb-8">Acesso por Perfil</h4>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-body-sm mb-2">
+<span class="font-bold text-on-surface">Alunos</span>
+<span class="text-on-surface-variant">72% (3.686)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-1000" style="width: 72%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-2">
+<span class="font-bold text-on-surface">Instrutores</span>
+<span class="text-on-surface-variant">22% (1.126)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-1000" style="width: 22%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-2">
+<span class="font-bold text-on-surface">Administrativo</span>
+<span class="text-on-surface-variant">6% (308)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full transition-all duration-1000" style="width: 6%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-10 p-4 bg-surface-container rounded-xl border border-dashed border-outline-variant">
+<p class="text-body-sm text-on-surface-variant text-center italic">
+                        Perfil de alunos cresceu significativamente desde o início do semestre letivo.
+                    </p>
+</div>
+</div>
+<!-- Most Used Features (Heat List) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-2xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h4 class="text-headline-sm font-bold text-on-surface">Funcionalidades Mais Utilizadas</h4>
+<button class="text-primary font-bold text-body-sm hover:underline">Ver mapa de calor completo</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center font-bold">1º</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface">Modo de Treinamento Livre</p>
+<p class="text-body-sm text-on-surface-variant">Utilização intensa em laboratórios práticos</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">15.4k</p>
+<p class="text-body-sm text-green-600 flex items-center justify-end gap-1"><span class="material-symbols-outlined text-xs">trending_up</span> 18%</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors">
+<div class="w-12 h-12 bg-surface-container-highest text-on-surface-variant rounded-lg flex items-center justify-center font-bold">2º</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface">Avaliação de Performance Real-time</p>
+<p class="text-body-sm text-on-surface-variant">Utilizado por instrutores para feedback</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">8.2k</p>
+<p class="text-body-sm text-green-600 flex items-center justify-end gap-1"><span class="material-symbols-outlined text-xs">trending_up</span> 5%</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors">
+<div class="w-12 h-12 bg-surface-container-highest text-on-surface-variant rounded-lg flex items-center justify-center font-bold">3º</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface">Exportação de Relatório de Solda</p>
+<p class="text-body-sm text-on-surface-variant">Fluxo final de certificação</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">4.9k</p>
+<p class="text-body-sm text-on-surface-variant flex items-center justify-end gap-1"><span class="material-symbols-outlined text-xs">horizontal_rule</span> 0%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage Insights -->
+<div class="col-span-12 lg:col-span-4 bg-primary-container/10 border border-primary/20 rounded-2xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h4 class="text-headline-sm font-bold text-on-surface">Insights IA</h4>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="min-w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-lg">trending_up</span>
+</div>
+<p class="text-body-md text-on-surface">
+                            O uso da tecnologia <span class="font-bold">cresceu 15.4%</span> após a última atualização v2.4, focada em UX.
+                        </p>
+</div>
+<div class="flex gap-4">
+<div class="min-w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-lg">warning</span>
+</div>
+<p class="text-body-md text-on-surface">
+                            Queda de 2% no tempo de sessão pode indicar maior <span class="font-bold">eficiência na conclusão</span> de tarefas.
+                        </p>
+</div>
+<div class="flex gap-4">
+<div class="min-w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-lg">schedule</span>
+</div>
+<p class="text-body-md text-on-surface">
+                            Pico de acessos ocorre entre <span class="font-bold">19:00 e 21:00</span>, sugerindo uso intensivo por turmas noturnas.
+                        </p>
+</div>
+</div>
+<button class="w-full mt-8 border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+                    Gerar Análise Profunda
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Footer Help -->
+<footer class="mt-stack-lg pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-body-sm text-on-surface-variant">© 2024 SENAI Inovação &amp; Tecnologia. Todos os direitos reservados.</p>
+<div class="flex gap-6">
+<a class="text-body-sm font-bold text-on-surface hover:text-primary transition-colors" href="#">Termos de Uso</a>
+<a class="text-body-sm font-bold text-on-surface hover:text-primary transition-colors" href="#">Privacidade</a>
+<a class="text-body-sm font-bold text-on-surface hover:text-primary transition-colors" href="#">Feedback</a>
+</div>
+</footer>
+</main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.bg-primary, .bg-secondary, .bg-tertiary');
+            bars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

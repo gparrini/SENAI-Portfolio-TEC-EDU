@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio de Tecnologias Educacionais | SENAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="SENAI - Portfólio de Tecnologias Educacionais">
+      <span class="logo" style="padding:0;border:0">SENA<i>i</i></span><span>Tecnologias Educacionais</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#jornadas">Jornadas</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#contato">Fale com o Instituto</a>
+    </nav>
+    <a class="btn btn-primary" href="#catalogo">Explorar</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero-in">
+      <div>
+        <span class="eyebrow"><span class="ms">auto_awesome</span> Instituto SESI SENAI de Tecnologias Educacionais</span>
+        <h1 id="h1">Tecnologias que ensinam, avaliam e conectam a indústria.</h1>
+        <p>Descubra as soluções desenvolvidas pelo SENAI para aprender, ensinar, praticar em realidade virtual e gerir a educação profissional.</p>
+        <form class="search" role="search" onsubmit="return false">
+          <span class="ms" aria-hidden="true">search</span>
+          <label class="sr" for="q">Buscar tecnologia</label>
+          <input id="q" type="search" placeholder="Busque por “libras”, “realidade virtual”, “provas”…" autocomplete="off">
+        </form>
+        <div class="persona" id="persona" role="group" aria-label="Quem é você?">
+          <small>Eu sou</small>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="float f1"><span class="ic" style="background:#9d2600"><span class="ms">school</span></span><div>SENAI Play<small>Microcursos no celular</small></div></div>
+        <div class="float f2"><span class="ic" style="background:#3d5aaa"><span class="ms">view_in_ar</span></span><div>Realidade mista<small>Holo SENAI &amp; NR10</small></div></div>
+        <div class="float f3"><span class="ic" style="background:#183a89"><span class="ms">smart_toy</span></span><div>Cadu, o chatbot<small>Tira dúvidas e gera quizzes</small></div></div>
+        <div class="float f4"><span class="ic" style="background:#c4380d"><span class="ms">accessibility_new</span></span><div>SENAI LIBRAS<small>Educação para todos</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="facts" id="facts"></div>
+
+    <div class="sec-h" id="jornadas">
+      <div><h2>O que você quer fazer hoje?</h2><p>Escolha uma jornada e veja as tecnologias que ajudam você a chegar lá.</p></div>
+    </div>
+    <div class="journeys" id="journeys"></div>
+
+    <div class="bar" id="catalogo" role="group" aria-label="Filtros">
+      <span class="lbl">Plataforma</span>
+      <span id="plats" style="display:contents"></span>
+      <span class="sep"></span>
+      <button class="chip" id="clear" type="button"><span class="ms">close</span> Limpar filtros</button>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+
+    <div id="groups"></div>
+
+    <section class="cta" id="contato">
+      <div>
+        <h3>Tem uma ideia ou uma dúvida sobre as tecnologias?</h3>
+        <p>O Instituto SESI SENAI de Tecnologias Educacionais acompanha todo o portfólio e pode orientar a sua unidade.</p>
+      </div>
+      <a class="btn btn-light" href="https://www.portaldaindustria.com.br/senai/canais/tecnologias-educacionais/" target="_blank" rel="noopener">Conhecer o Instituto <span class="ms">arrow_outward</span></a>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap">© SENAI — Serviço Nacional de Aprendizagem Industrial. Portfólio de Tecnologias Educacionais.</div></footer>
+
+<script src="data.js"></script>
+<script>
+const $ = (s, r = document) => r.querySelector(s);
+const state = { q: "", cat: null, aud: null, plat: null };
+const platIcon = { Web: "language", Mobile: "smartphone", Android: "android", iOS: "phone_iphone", "Meta Quest": "vrpano", Desktop: "desktop_windows" };
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const catOf = id => CATS.find(c => c.id === id);
+
+// Persona (público)
+$("#persona").insertAdjacentHTML("beforeend",
+  Object.entries(AUD).map(([k, v]) => `<button class="pill" type="button" data-aud="${k}" aria-pressed="false">${v}</button>`).join(""));
+$("#persona").addEventListener("click", e => {
+  const b = e.target.closest("[data-aud]"); if (!b) return;
+  state.aud = state.aud === b.dataset.aud ? null : b.dataset.aud; render();
+  if (state.aud) $("#catalogo").scrollIntoView({ behavior: "smooth" });
+});
+
+// Jornadas
+$("#journeys").innerHTML = CATS.map(c => {
+  const n = TECHS.filter(t => t.cat === c.id).length;
+  return `<button class="jt" type="button" data-cat="${c.id}" aria-pressed="false" style="--h:${c.hue}">
+    <em>${n}</em><span class="ic"><span class="ms">${c.icon}</span></span>
+    <div><b>${c.name}</b><span class="t">${c.blurb}</span></div></button>`;
+}).join("");
+$("#journeys").addEventListener("click", e => {
+  const b = e.target.closest("[data-cat]"); if (!b) return;
+  state.cat = state.cat === b.dataset.cat ? null : b.dataset.cat; render();
+  $("#catalogo").scrollIntoView({ behavior: "smooth" });
+});
+
+// Plataformas
+const plats = [...new Set(TECHS.flatMap(t => t.plat))];
+$("#plats").innerHTML = plats.map(p => `<button class="chip" type="button" data-plat="${p}" aria-pressed="false"><span class="ms">${platIcon[p] || "devices"}</span>${p}</button>`).join("");
+$("#plats").addEventListener("click", e => {
+  const b = e.target.closest("[data-plat]"); if (!b) return;
+  state.plat = state.plat === b.dataset.plat ? null : b.dataset.plat; render();
+});
+$("#clear").onclick = () => { Object.assign(state, { q: "", cat: null, aud: null, plat: null }); $("#q").value = ""; render(); };
+$("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
+
+$("#facts").innerHTML =
+  `<span><b>${TECHS.length}</b>tecnologias</span><span><b>${CATS.length}</b>jornadas</span><span><b>${plats.length}</b>plataformas: web, mobile e realidade virtual</span>`;
+
+function tile(t, extra = "") {
+  const c = catOf(t.cat);
+  const who = t.aud.map(a => AUD[a]).join(" · ");
+  return `<a class="tile${t.featured ? " feat" : ""}${extra}" href="tecnologia.html?id=${t.id}" style="--h:${c.hue}">
+    ${t.featured ? `<span class="ms bgic" aria-hidden="true">${c.icon}</span>` : ""}
+    <span class="kick">${t.kicker}</span>
+    <h4>${t.name}</h4>
+    <p>${t.desc}</p>
+    <div class="foot"><span class="plat">${t.plat.map(p => `<span class="tag">${p}</span>`).join("")}</span><span>${who}</span><span class="go ms" aria-hidden="true">arrow_forward</span></div>
+  </a>`;
+}
+
+// Mantém a grade de 3 colunas sem "buracos": o destaque ocupa 2 colunas só quando fecha a linha
+function layout(items) {
+  const n = items.length, r = (n + 1) % 3;
+  if (items[0].featured && n > 1 && r === 1) items[0] = { ...items[0], featured: false };
+  return items.map((t, i) => {
+    if (n === 1) return tile(t, " full");
+    if (i === n - 1 && r === 2 && !(i === 0)) return tile(t, " wide");
+    return tile(t);
+  }).join("");
+}
+
+function render() {
+  const q = norm(state.q.trim());
+  const list = TECHS.filter(t =>
+    (!state.cat || t.cat === state.cat) &&
+    (!state.aud || t.aud.includes(state.aud)) &&
+    (!state.plat || t.plat.includes(state.plat)) &&
+    (!q || norm([t.name, t.kicker, t.desc, catOf(t.cat).long, catOf(t.cat).name].join(" ")).includes(q)));
+  document.querySelectorAll("[data-cat]").forEach(b => b.setAttribute("aria-pressed", b.dataset.cat === state.cat));
+  document.querySelectorAll("[data-aud]").forEach(b => b.setAttribute("aria-pressed", b.dataset.aud === state.aud));
+  document.querySelectorAll("[data-plat]").forEach(b => b.setAttribute("aria-pressed", b.dataset.plat === state.plat));
+  $("#count").textContent = `${list.length} ${list.length === 1 ? "tecnologia" : "tecnologias"}`;
+  $("#clear").hidden = !(state.q || state.cat || state.aud || state.plat);
+  $("#groups").innerHTML = list.length ? CATS.map(c => {
+    const items = list.filter(t => t.cat === c.id); if (!items.length) return "";
+    // destaque só aparece quando o grupo tem mais de um item e começa por ele
+    items.sort((a, b) => (b.featured || 0) - (a.featured || 0));
+    return `<section class="group" id="g-${c.id}" style="--h:${c.hue}">
+      <div class="group-h"><span class="ic"><span class="ms">${c.icon}</span></span>
+      <div><h3>${c.name} <span style="font-weight:500;color:var(--on-surface-variant)">· ${c.long}</span></h3><p>${c.blurb}</p></div></div>
+      <div class="grid">${layout(items)}</div></section>`;
+  }).join("") : `<div class="empty"><span class="ms">search_off</span><h3>Nada por aqui ainda</h3><p>Tente outro termo ou limpe os filtros.</p></div>`;
+}
+render();
+</script>
+</body>
+</html>

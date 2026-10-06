@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="pt-BR" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Dashboard de Gestão - SENAI Tech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#ffb5a1",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#882000",
+                        "surface-container": "#e8eeff",
+                        "surface": "#f9f9ff",
+                        "primary-fixed-dim": "#ffb5a1",
+                        "on-tertiary-fixed-variant": "#44474a",
+                        "on-surface": "#111c2d",
+                        "background": "#f9f9ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#686b6e",
+                        "surface-variant": "#d9e3fb",
+                        "surface-container-highest": "#d9e3fb",
+                        "surface-dim": "#d0daf2",
+                        "on-secondary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#b22c00",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "surface-container-high": "#dfe8ff",
+                        "surface-bright": "#f9f9ff",
+                        "outline": "#8e7068",
+                        "on-primary-fixed": "#3b0800",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-secondary-container": "#183a89",
+                        "primary-container": "#c4380d",
+                        "outline-variant": "#e3bfb5",
+                        "inverse-on-surface": "#ecf0ff",
+                        "primary-fixed": "#ffdbd1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#ffe7e2",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#eaecef",
+                        "on-surface-variant": "#5a413a",
+                        "inverse-surface": "#273143",
+                        "secondary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#8ca8fe",
+                        "on-background": "#111c2d",
+                        "tertiary": "#505356",
+                        "primary": "#c4380d",
+                        "secondary": "#3d5aaa",
+                        "on-secondary-fixed-variant": "#224291"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-content-width": "1280px",
+                        "container-padding": "24px",
+                        "gutter": "20px",
+                        "sidebar-width": "280px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon { font-variation-settings: 'FILL' 1; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e3bfb5; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface border-r border-outline-variant flex flex-col py-container-padding z-50">
+<div class="px-6 mb-stack-lg">
+<img alt="SENAI Logo" class="h-10 w-auto mb-1 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmCpJJ7AV0rhPDlKU_ZLswajdplzznw4CKKH8fMbUUMp4SddujPEkEEye3iidUMR5_5SsZ2wLy54ab9yZ0tUhDyBaXHj_JenwXBXqnsZlvUcYx3Or5yqJQh5OoKmzoHVNrEFbDBs0LT_UZDby9pyCxD8IVRkLZ3kYP9CqegVMNs-hf1tZq-vxEfgYEnSCaEfS2SdFpKLhPIeQdG8xT11YvlltA2JiQlDj9ZhWH_Rvnsw-5I6QzVNxGrqSE14iNGePEmQHNLPf9xFE">
+<p class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-wider">TECNOLOGIAS EDUCACIONAIS</p>
+</div>
+<nav class="flex-1 space-y-1"><!-- Painel (Active) -->
+<a class="flex items-center gap-3 px-6 py-3 border-l-4 border-primary bg-surface-container-high text-primary font-semibold transition-all" href="#">
+<span class="material-symbols-outlined active-icon" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-body-md text-body-md">Painel</span>
+</a>
+<!-- Portfólio -->
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Portfólio</span>
+</a>
+<!-- Ciclo de Vida -->
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">history_toggle_off</span>
+<span class="font-body-md text-body-md">Ciclo de Vida</span>
+</a>
+<!-- Relatórios -->
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md text-body-md">Relatórios</span>
+</a></nav>
+<!-- Bottom Help Button -->
+<div class="px-6 mt-auto">
+<button class="w-full flex items-center gap-3 p-3 bg-surface-container-low hover:bg-surface-container-high rounded-xl text-on-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">help_center</span>
+<span class="font-label-md text-label-md">Central de Ajuda</span>
+</button>
+</div>
+</aside>
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center h-16 px-container-padding sticky top-0 z-40 ml-sidebar-width bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4 flex-1">
+<!-- Breadcrumb -->
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="text-outline-variant">/</span>
+<span class="font-body-md text-body-md">Painel</span>
+<span class="text-outline-variant">/</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface whitespace-nowrap">Visão Geral</h2>
+</div>
+<!-- Centered Search Bar -->
+<div class="absolute left-1/2 -translate-x-1/2 w-full max-w-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-body-md outline-none" placeholder="Pesquisar tecnologias..." type="text">
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all focus:ring-2 focus:ring-primary rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all focus:ring-2 focus:ring-primary rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<!-- User Profile -->
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-label-md text-on-surface font-bold leading-tight">Admin User</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Gestor de TI</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJBH1hqQSjWndA5Y9GHUFzVvoCNLskc5eW2wlt8Zg0751qU9N1mrXN1Z99_RRL5kqRrMhXm0iuURQ6li-oog0uaC-Qrw81fKoRPeMaWC1TmS6xRW54x2pcH4YliMMWAfJr3t4qNACByo9rIyPzPuXIUoYxBxBobNx7jVyb-J_il61MK-xuR3uVrd9wCzF6jBvLi6mH7Enq2K28S2h8qTli1vv0ALlKF9e34k11t10114A3-behNOIK_twgyGxiCBGgixjyOlhuH_8">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width p-container-padding min-h-[calc(100vh-64px)]">
+<div class="max-w-max-content-width mx-auto">
+<header class="mb-stack-lg flex justify-between items-end">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Dashboard de Gestão</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Visão geral do ecossistema educacional SENAI.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Nova Tecnologia
+                </button>
+</header>
+<!-- KPI Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<!-- Total Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl transition-all hover:shadow-lg group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-fixed rounded-lg text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined">apps</span>
+</div>
+<span class="flex items-center gap-1 font-label-md text-label-md text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                            +5% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Total de Tecnologias</p>
+<p class="font-display-lg text-display-lg mt-1">42</p>
+</div>
+<!-- Development Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl transition-all hover:shadow-lg group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-surface-container-high text-secondary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined">construction</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Em Desenvolvimento</p>
+<p class="font-display-lg text-display-lg mt-1">12</p>
+</div>
+<!-- Production Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl transition-all hover:shadow-lg group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-green-100 text-green-700 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined">verified</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Em Produção</p>
+<p class="font-display-lg text-display-lg mt-1">18</p>
+</div>
+<!-- Ideation Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl transition-all hover:shadow-lg group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-100 text-orange-600 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ideação/Pesquisa</p>
+<p class="font-display-lg text-display-lg mt-1">12</p>
+</div>
+</section>
+<!-- Charts and Tables -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter items-start">
+<!-- Distribution Card -->
+<div class="xl:col-span-1 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 h-full min-h-[400px] flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="font-headline-sm text-headline-sm">Portfolio Distribution</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Categorias predominantes</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-6">
+<div class="relative w-48 h-48 mx-auto">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<circle class="stroke-surface-container" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="70, 100" stroke-width="3"></circle>
+<circle class="stroke-secondary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="30, 100" stroke-dashoffset="-70" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md">42</span>
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Total</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-body-md text-body-md">Indústria 4.0</span>
+</div>
+<span class="font-label-md text-label-md">65%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-body-md text-body-md">IoT &amp; Robótica</span>
+</div>
+<span class="font-label-md text-label-md">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-outline"></div>
+<span class="font-body-md text-body-md">Outros</span>
+</div>
+<span class="font-label-md text-label-md">10%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activities Table -->
+<div class="xl:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm">Recent Publications</h3>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">filter_list</span></button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left font-body-md text-body-md">
+<thead class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-semibold">Technology Name</th>
+<th class="px-6 py-4 font-semibold">Category</th>
+<th class="px-6 py-4 font-semibold">Current Status</th>
+<th class="px-6 py-4 font-semibold">Last Update</th>
+<th class="px-6 py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-primary font-bold text-[12px]">VR</div>
+<span class="font-bold">Realidade Aumentada - Soldagem</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Indústria 4.0</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Aprovado</span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">12 Mai 2024</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-secondary"><span class="material-symbols-outlined text-[20px]">visibility</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface font-bold text-[12px]">AI</div>
+<span class="font-bold">Tutor Inteligente de Mecânica</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Educação Digital</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Em análise</span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">08 Mai 2024</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-secondary"><span class="material-symbols-outlined text-[20px]">visibility</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant flex items-center justify-between">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing 4 of 42 technologies</p>
+<div class="flex items-center gap-4">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant disabled:opacity-30" disabled=""><span class="material-symbols-outlined">chevron_left</span></button>
+<span class="font-label-md text-label-md">Page 1 of 11</span>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Banner -->
+<section class="mt-stack-lg bg-inverse-surface text-inverse-on-surface rounded-xl p-8 relative overflow-hidden">
+<div class="relative z-10 max-w-xl">
+<h3 class="font-headline-md text-headline-md mb-2">Relatório Consolidado Disponível</h3>
+<p class="font-body-lg text-body-lg text-surface-variant mb-6">O ciclo de avaliação trimestral foi concluído. Verifique o desempenho das novas tecnologias integradas ao portfólio.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all">Baixar PDF</button>
+<button class="border border-inverse-on-surface px-6 py-2.5 rounded-lg font-label-md text-label-md hover:bg-white/10 transition-all">Ver Detalhes</button>
+</div>
+</div>
+<div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-20 pointer-events-none">
+<img alt="Data visualization background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN0hUrf3ws17eQEA5XNIz1UYd4MZX_p4l-0deN-48CsebCYp2F6mrZ5EQcdeoNbpu-BCz8SOpiJ7MRZv_CVLKn6VzXMNsUzF4vpR-_wGiPYDIliKLR_40GQvBGZSj2KH7_eMqqwrYMINMFiq5Dxh-F-J3uXhHpflJfuHXWUU4CkoDg95VZllRn5YCiQ1pLnkw_oXh9sFsuNVVgSBz-YToqC-OuAhzAS-J9cQ4avs_CFZurqecgWe71xU7xCcKV22iHtHh8It6zEoU">
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for sidebar links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href') === '#') e.preventDefault();
+                document.querySelectorAll('nav a').forEach(l => {
+                    l.classList.remove('bg-surface-container-high', 'text-primary', 'font-semibold', 'border-l-4', 'border-primary');
+                    l.classList.add('text-on-surface-variant');
+                    const icon = l.querySelector('.material-symbols-outlined');
+                    if(icon) icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                link.classList.add('bg-surface-container-high', 'text-primary', 'font-semibold', 'border-l-4', 'border-primary');
+                link.classList.remove('text-on-surface-variant');
+                const activeIcon = link.querySelector('.material-symbols-outlined');
+                if(activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tecnologia | Portfólio SENAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="logo" style="padding:0;border:0">SENA<i>i</i></span><span>Tecnologias Educacionais</span></a>
+    <nav class="nav"><a href="index.html#jornadas">Jornadas</a><a href="index.html#catalogo">Catálogo</a><a href="index.html#contato">Fale com o Instituto</a></nav>
+    <a class="btn btn-primary" href="index.html#catalogo">Explorar</a>
+  </div>
+</header>
+<main class="wrap" id="app"></main>
+<footer><div class="wrap">© SENAI — Serviço Nacional de Aprendizagem Industrial. Portfólio de Tecnologias Educacionais.</div></footer>
+
+<script src="data.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get("id");
+const t = TECHS.find(x => x.id === id) || TECHS[0];
+const c = CATS.find(x => x.id === t.cat);
+document.title = `${t.name} | Portfólio SENAI`;
+const related = TECHS.filter(x => x.cat === t.cat && x.id !== t.id).slice(0, 3);
+const extLabel = u => { try { return new URL(u).hostname.replace("www.", ""); } catch { return ""; } };
+
+const main = links => links.length ? links.map((l, i) =>
+  `<a class="btn ${l.primary ? "btn-primary" : "btn-sec"}" href="${l.url}" target="_blank" rel="noopener">${l.label}<span class="ms">arrow_outward</span></a>`).join("")
+  : `<p style="font-size:15px;color:var(--on-surface-variant)">O acesso a esta tecnologia é feito pela sua unidade SENAI.</p>`;
+
+document.getElementById("app").innerHTML = `
+  <nav class="crumbs" aria-label="Você está em"><a href="index.html">Portfólio</a><span class="ms">chevron_right</span><a href="index.html#g-${c.id}">${c.name}</a><span class="ms">chevron_right</span><b>${t.name}</b></nav>
+  <section class="dhero" style="--h:${c.hue}">
+    <span class="ms bgic" aria-hidden="true">${c.icon}</span>
+    <span class="kick">${c.long}</span>
+    <h1>${t.name}</h1>
+    <p class="sub">${t.kicker}</p>
+  </section>
+  <div class="dlayout" style="--h:${c.hue}">
+    <div>
+      <article class="card"><h2>Sobre a tecnologia</h2><p>${t.desc}</p>
+        <div class="meta">
+          <div><small>Para quem é</small>${t.aud.map(a => AUD[a]).join(", ")}</div>
+          <div><small>Onde usar</small>${t.plat.join(", ")}</div>
+        </div>
+      </article>
+      ${related.length ? `<div class="sec-h" style="margin-top:40px"><div><h2 style="font-size:24px">Mais em “${c.name}”</h2></div></div>
+      <div class="rel">${related.map(r => `<a class="tile" href="tecnologia.html?id=${r.id}" style="--h:${c.hue}"><span class="kick">${r.kicker}</span><h4>${r.name}</h4><p>${r.desc}</p><div class="foot"><span class="go ms" aria-hidden="true">arrow_forward</span></div></a>`).join("")}</div>` : ""}
+    </div>
+    <aside class="card access" aria-label="Como acessar"><h2>Como acessar</h2>${main(t.links)}
+      <a class="btn" style="justify-content:center;color:var(--on-surface-variant)" href="index.html#catalogo"><span class="ms">arrow_back</span>Voltar ao catálogo</a></aside>
+  </div>`;
+</script>
+</body>
+</html>

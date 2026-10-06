@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="pt-BR" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Portal SENAI - Funil de Inovação</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d9e3fb",
+                        "surface-variant": "#d9e3fb",
+                        "secondary-fixed": "#dbe1ff",
+                        "tertiary-container": "#686b6e",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface": "#f9f9ff",
+                        "primary": "#9d2600",
+                        "on-primary-fixed": "#3b0800",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#8ca8fe",
+                        "on-tertiary-fixed": "#191c1e",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-secondary-container": "#183a89",
+                        "outline-variant": "#e3bfb5",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#dfe8ff",
+                        "on-secondary-fixed": "#00174b",
+                        "on-secondary-fixed-variant": "#224291",
+                        "on-tertiary-fixed-variant": "#44474a",
+                        "on-background": "#111c2d",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdbd1",
+                        "on-primary-fixed-variant": "#882000",
+                        "inverse-primary": "#ffb5a1",
+                        "on-surface": "#111c2d",
+                        "surface-bright": "#f9f9ff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#5a413a",
+                        "on-error": "#ffffff",
+                        "secondary": "#3d5aaa",
+                        "primary-container": "#c4380d",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "inverse-on-surface": "#ecf0ff",
+                        "inverse-surface": "#273143",
+                        "surface-container": "#e8eeff",
+                        "background": "#f9f9ff",
+                        "on-primary-container": "#ffe7e2",
+                        "outline": "#8e7068",
+                        "on-tertiary-container": "#eaecef",
+                        "tertiary": "#505356",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb5a1",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#b22c00",
+                        "surface-dim": "#d0daf2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "sidebar-width": "280px",
+                        "gutter": "20px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px",
+                        "max-content-width": "1280px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f9f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .funnel-container::-webkit-scrollbar { height: 8px; }
+        .funnel-container::-webkit-scrollbar-track { background: #f0f3ff; }
+        .funnel-container::-webkit-scrollbar-thumb { background: #c4380d; border-radius: 4px; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width z-50 flex flex-col py-6 bg-surface-container-low border-r border-outline-variant">
+<div class="px-6 mb-8">
+<img alt="Logo SENAI" class="h-10 w-auto mb-1 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbTzCfXgppTfdVThP-cufALM4E_XokUHeTa2NFqI8t9iew9jcNd8T5-_BBBjw4NWyPUzSSBc8SQfT-ur_7li4tVM_fLnuRw1hp0C5p3q_7ZFTRISWzLmFOr_Lm72WxS6C-dBSSr8nNVC9dq4_iR3LFnIHbUzuM9x2B34clhOLa0ic_iU6HQ0RWVOWRvSdImneuWzUgUzPUUh86iBxxkzO1470vZc4X8PvNolVt9mQU-SFwQu9qL6Iu72v7KtW_B4LnfX5bY6KJpY8">
+<div class="flex flex-col">
+<p class="text-on-surface font-black text-headline-sm uppercase tracking-tight">Portfólio Educacional</p>
+
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container-high rounded-r-full transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Painel</span>
+</a>
+<a class="flex items-center gap-3 rounded-r-full py-3 px-4 transition-all text-on-surface-variant hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Portfólio</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-r-full transition-all bg-primary-container text-on-primary-container border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="font-label-md text-label-md">Ciclo de Vida</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container-high rounded-r-full transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Relatórios</span>
+</a>
+
+</nav>
+<div class="px-3 mt-auto space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container-high rounded-r-full transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-md text-label-md">Suporte</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 hover:bg-surface-container-high rounded-r-full transition-all text-error" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sair</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-gutter w-[calc(100%-280px)] bg-surface h-16 border-b border-outline-variant w-full"><div class="flex items-center gap-4 flex-1">
+<nav class="flex items-center gap-2 text-on-surface-variant text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">home</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="">Painel</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-bold border-b-2 border-primary">Funil de Inovação</span>
+</nav>
+</div>
+<div class="flex-1 flex justify-center">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary outline-none" placeholder="Pesquisar tecnologias..." type="text">
+</div>
+</div>
+<div class="flex items-center justify-end gap-6 flex-1">
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full"><span class="material-symbols-outlined">help</span></button>
+<div class="flex items-center gap-3 ml-2 border-l border-outline-variant pl-4">
+<div class="text-right">
+<p class="font-body-md font-bold text-on-surface leading-tight">Admin User</p>
+<p class="text-body-sm text-on-surface-variant">Gestor de TI</p>
+</div>
+<img alt="Foto de perfil" class="w-10 h-10 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBf-qTydtnNvHDFiclWdu9TlVdY6NbJb_mTiZXhrzAebmeF7i4fo9_N_2yG9-aldkQCtRd3Swy3DaJf68kRy7wBjDY2lNm5pAI5N2thsEiaHPWGVwN7xe8yMsY05CMq1zq60vZX8iFD_uRWh5zXrooxXzhZSP6y590lmPzUDGzw3-xUvtbkzKgoerMIdAYpbfkCEX1c3KIB7hMIGrH9TR2R4GNxRSIyp73YDrRXI95o7oesa9INlhfdCtL6L0f9SyrZSxTD0W_7t4">
+</div>
+</div>
+</div></header>
+<section class="p-8 mx-auto max-w-full">
+<!-- Header & Metrics -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+<div>
+<h3 class="text-display-lg font-display-lg text-on-surface">Funil de Inovação</h3>
+<p class="text-body-lg text-on-surface-variant">Gestão do ciclo de vida tecnológico e maturidade institucional.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 min-w-[140px] shadow-sm">
+<p class="text-body-sm text-on-surface-variant font-semibold">Total Projetos</p>
+<p class="text-headline-md font-bold text-primary">142</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 min-w-[140px] shadow-sm">
+<p class="text-body-sm text-on-surface-variant font-semibold">Tempo Médio</p>
+<p class="text-headline-md font-bold text-secondary">4.2 m</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 min-w-[140px] shadow-sm">
+<p class="text-body-sm text-on-surface-variant font-semibold">ROI Estimado</p>
+<p class="text-headline-md font-bold text-on-surface">R$ 1.2M</p>
+</div>
+</div>
+</div>
+<!-- Pipeline/Funnel Layout -->
+<div class="funnel-container flex gap-6 overflow-x-auto pb-6">
+<!-- Stage: Ideação -->
+<div class="flex-shrink-0 w-80">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<h4 class="text-headline-sm font-bold text-on-surface">Ideação</h4>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-1 rounded text-label-md">24</span>
+</div>
+<div class="space-y-4">
+<!-- Card 1 -->
+<div class="bg-white border border-outline-variant p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border-t-4 border-t-secondary-container" style="transform: translateY(0px);">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-high text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase">Manufatura</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="more_vert">more_vert</span>
+</div>
+<h5 class="text-body-lg font-bold mb-1">Gêmeos Digitais para PME</h5>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Implementação de sensores IoT para simulação em tempo real de linhas de montagem.</p>
+<div class="mt-4 flex items-center justify-between border-t border-f2f4f7 pt-3">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white" data-alt="Close-up portrait of a young professional woman with glasses, smiling warmly. The visual style is crisp and modern, featuring bright natural lighting and a high-key color palette of white and soft neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgvkLIDUU14Fs1fQr8DsvPFmPn4E877RlvJ5AW0nYT-SgNrhKb7nFGpF-5UDHhOLTZp1ZOTCL6Dsq0ItMLRhOLnpCFaMGf81HncSfFNnRIbSputlsXRlagScTox6UqBp6PDG5JdY6paeTv8_vVTcoDPXlpAYrpLnrdq7ZVcS5jbQUEOwbol8bMuyM0_VzSGe9tGGGVR1hpP2eLyVJNcBNYPgK8YEhsyFKsk8B9Wx2oNHUHkzISswBIA0YCAlw6VIdB2aKWPTl1HYo">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center text-[10px] font-bold">+2</div>
+</div>
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 12d
+                                </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border border-outline-variant p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border-t-4 border-t-secondary-container" style="transform: translateY(0px);">
+<h5 class="text-body-lg font-bold mb-1">Blockchain no Rastreio têxtil</h5>
+<p class="text-body-sm text-on-surface-variant line-clamp-2">Solução para certificação de origem sustentável de fibras naturais.</p>
+<div class="mt-4 flex items-center justify-between border-t border-f2f4f7 pt-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="priority_high">priority_high</span>
+<span class="text-[10px] font-bold text-primary">Alta Prioridade</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Ontem</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stage: Desenvolvimento -->
+<div class="flex-shrink-0 w-80">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<h4 class="text-headline-sm font-bold text-on-surface">Desenvolvimento</h4>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded text-label-md">12</span>
+</div>
+<div class="space-y-4">
+<div class="bg-white border border-outline-variant p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border-t-4 border-t-primary-container" style="transform: translateY(0px);">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-high text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase">Automotivo</span>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-[10px] font-bold">75%</span>
+</div>
+</div>
+<h5 class="text-body-lg font-bold mb-1">Eletroposto Inteligente</h5>
+<div class="w-full bg-surface-container rounded-full h-1.5 my-3">
+<div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<p class="text-body-sm text-on-surface-variant">Fase de testes de bancada e homologação de hardware.</p>
+<div class="mt-4 flex items-center justify-between border-t border-f2f4f7 pt-3">
+<img class="w-6 h-6 rounded-full border-2 border-white" data-alt="Portrait of a male engineer in his late 30s, wearing a high-quality polo shirt. The lighting is crisp and studio-grade, reflecting a modern, tech-focused institutional environment with a neutral white and blue color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByu73zgcqYbP-Mk4vGcv0xqaRox8pNX2CUay0crpuwbEctxxklHhkerX3nu1BkGTxb99RZTDZHOzE6Sz0lV5OMWg_h6yH-GKEQLO06gGFxMgTm2Jl3ujt-zVdbG_UrTo_NqB5CqasTnyWX7hNwwNfN3M6u7JindPaSekADWHjXFAZBfftrMAioVYDAM5oOY4vDSLAotrIpL-lbbllfCC73_RlxXhivuXOo9sXr9R-4hWrS_f54ADeeDRtDwak1-PGsmpi-DhZWeiI">
+<span class="text-[11px] text-on-surface-variant font-bold">Review em 2d</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stage: Produção -->
+<div class="flex-shrink-0 w-80">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-green-500"></span>
+<h4 class="text-headline-sm font-bold text-on-surface">Produção</h4>
+</div>
+<span class="bg-green-100 text-green-800 px-2 py-1 rounded text-label-md">08</span>
+</div>
+<div class="space-y-4">
+<div class="bg-white border border-outline-variant p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer border-t-4 border-t-green-500" style="transform: translateY(0px);">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-surface-container-high text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase">Alimentos</span>
+<span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-[9px] font-bold">EM ESCALA</span>
+</div>
+<h5 class="text-body-lg font-bold mb-1">Proteína de Insetos</h5>
+<p class="text-body-sm text-on-surface-variant">Lote piloto aprovado. Integração com parceiros comerciais.</p>
+<div class="mt-4 bg-surface-container-low p-2 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-green-600" data-icon="check_circle">check_circle</span>
+<span class="text-[10px] font-semibold text-on-surface-variant">Certificação de Qualidade Concluída</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stage: Evolução -->
+<div class="flex-shrink-0 w-80">
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-on-tertiary-fixed-variant"></span>
+<h4 class="text-headline-sm font-bold text-on-surface">Evolução</h4>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-1 rounded text-label-md">05</span>
+</div>
+<div class="space-y-4 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="bg-white border border-outline-variant p-4 rounded-xl shadow-sm border-t-4 border-t-on-tertiary-fixed-variant" style="transform: translateY(0px);">
+<h5 class="text-body-lg font-bold mb-1">IA para Predição de Falhas</h5>
+<p class="text-body-sm text-on-surface-variant">Upgrade para rede neural de 3ª geração e novos modelos de ML.</p>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="update">update</span>
+<span class="text-[10px] font-bold text-secondary">Manutenção Evolutiva</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Stage Placeholder -->
+<div class="flex-shrink-0 w-80 flex flex-col items-center justify-center border-2 border-dashed border-outline-variant rounded-2xl h-[400px] bg-surface-container-low/50 group cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 rounded-full bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="add">add</span>
+</div>
+<p class="text-label-md font-bold text-on-surface-variant">Nova Etapa do Ciclo</p>
+</div>
+</div>
+<!-- Dashboard Charts / Insights Row (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white p-6 rounded-2xl border border-outline-variant shadow-sm" style="transform: translateY(0px);">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-headline-sm font-bold text-on-surface">Métricas de Impacto e Adoção</h4>
+<button class="text-primary text-label-md font-bold hover:underline">Ver Relatório Completo</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Distribui15o por Unidade -->
+<div class="space-y-4">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider">Distribuição por DR</p>
+<div class="flex items-end gap-2 h-32">
+<div class="flex-1 bg-secondary-container rounded-t-sm h-[60%]" title="Hub-SP"></div>
+<div class="flex-1 bg-secondary-container rounded-t-sm h-[40%]" title="Hub-RJ"></div>
+<div class="flex-1 bg-secondary-container rounded-t-sm h-[85%]" title="Hub-MG"></div>
+<div class="flex-1 bg-secondary-container rounded-t-sm h-[35%]" title="Hub-SC"></div>
+<div class="flex-1 bg-secondary-container rounded-t-sm h-[25%]" title="Hub-PR"></div>
+</div>
+<div class="flex justify-between text-[8px] font-bold text-on-surface-variant uppercase">
+<span class="">SP</span><span class="">RJ</span><span class="">MG</span><span class="">SC</span><span class="">PR</span>
+</div>
+</div>
+<!-- Novas Tecnologias (30 dias) -->
+<div class="space-y-4">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider">Novas Tecnologias (30d)</p>
+<div class="flex items-center gap-4">
+<div class="text-display-lg font-black text-primary">+24</div>
+<div class="flex flex-col">
+<span class="text-green-600 font-bold text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> 12%
+              </span>
+<span class="text-on-surface-variant text-[10px]">vs. mês anterior</span>
+</div>
+</div>
+<div class="flex gap-1 h-8 items-end">
+<div class="flex-1 bg-primary-fixed h-2 rounded-full"></div>
+<div class="flex-1 bg-primary-fixed h-4 rounded-full"></div>
+<div class="flex-1 bg-primary-fixed h-3 rounded-full"></div>
+<div class="flex-1 bg-primary-container h-6 rounded-full"></div>
+<div class="flex-1 bg-primary-fixed h-5 rounded-full"></div>
+</div>
+</div>
+<!-- Taxa de Aceita15o / Satisfa15o -->
+<div class="space-y-4">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider">Taxa de Aceitação</p>
+<div class="relative flex items-center justify-center pt-2">
+<svg class="w-24 h-24 transform -rotate-90">
+<circle class="text-surface-container-high" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="25.12" stroke-width="8"></circle>
+</svg>
+<div class="absolute text-headline-sm font-black text-on-surface">90%</div>
+</div>
+<p class="text-center text-[10px] text-on-surface-variant">Nível de satisfação</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Mensagem do Dia -->
+<div class="bg-surface-container-highest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="bg-white/50 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary mb-4 inline-block uppercase">Mensagem do Dia</span>
+<h4 class="text-headline-sm font-black text-on-background leading-tight mb-2">Relatório Anual de Impacto Tecnológico</h4>
+<p class="text-body-sm text-on-surface-variant">O documento consolidado das metas do semestres estão disponível para consulta.</p>
+</div>
+<button class="text-white w-full py-3 rounded-xl font-bold mt-6 hover:shadow-lg transition-all relative z-10 bg-primary-container flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">download</span>
+      Baixar PDF
+    </button>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.bg-white.border.border-outline-variant').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple horizontal drag for the funnel container
+        const scrollContainer = document.querySelector('.funnel-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+        scrollContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body></html>

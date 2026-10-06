@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Simulador de Braço Robótico VR | Portal SENAI</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#882000",
+                    "on-secondary-fixed-variant": "#224291",
+                    "surface-bright": "#f9f9ff",
+                    "surface-tint": "#b22c00",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#ffe7e2",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#d9e3fb",
+                    "on-secondary-container": "#183a89",
+                    "primary": "#9d2600",
+                    "on-background": "#111c2d",
+                    "inverse-surface": "#273143",
+                    "tertiary": "#505356",
+                    "on-tertiary-fixed-variant": "#44474a",
+                    "background": "#f9f9ff",
+                    "tertiary-fixed-dim": "#c4c7ca",
+                    "on-tertiary-fixed": "#191c1e",
+                    "inverse-primary": "#ffb5a1",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#e8eeff",
+                    "secondary-container": "#8ca8fe",
+                    "secondary": "#3d5aaa",
+                    "tertiary-container": "#686b6e",
+                    "on-tertiary-container": "#eaecef",
+                    "surface-container-high": "#dfe8ff",
+                    "outline-variant": "#e3bfb5",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#5a413a",
+                    "on-secondary-fixed": "#00174b",
+                    "surface-container-highest": "#d9e3fb",
+                    "secondary-fixed": "#dbe1ff",
+                    "inverse-on-surface": "#ecf0ff",
+                    "surface-dim": "#d0daf2",
+                    "tertiary-fixed": "#e0e3e6",
+                    "surface-container-low": "#f0f3ff",
+                    "primary-container": "#c4380d",
+                    "primary-fixed-dim": "#ffb5a1",
+                    "primary-fixed": "#ffdbd1",
+                    "on-error": "#ffffff",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#111c2d",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#3b0800",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#8e7068"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding": "24px",
+                    "sidebar-width": "280px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "gutter": "20px",
+                    "max-content-width": "1280px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f9f9ff;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar Implementation from JSON -->
+<header class="fixed top-0 left-0 w-full h-20 bg-surface border-b border-outline-variant flex justify-between items-center px-container-padding z-40"><div class="flex items-center mr-8"><img alt="SENAI Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIbuQai-dom57ZgxsHcFgbkIJx0JbWv2GIPp7OSx1YxIsG2Orsc_rQNxM1qtRlsrNZhQdhNy8mvgU1lw0WSAOjczlMpm0ShZu0IPj_epOJTJlqvUpP4XVRVGD5mZ1BQnT6Gc6CBvknifWNaayfY3OXAVx_lgMrTibLDEfRVomKICrLV0h2guZ1NvQR4m_goia7RdomnH_S-mkVDX9F46m2omga1v6i0rPaN0PxXFGaPWgz1kLLWjh2VXmd8P_IPeB1YXAfx9juxyk"></div><div class="flex items-center hidden lg:flex"><h2 class="font-headline-sm text-on-surface text-headline-sm font-bold whitespace-nowrap">Portfólio de Tecnologias</h2></div><div class="flex items-center gap-stack-md flex-1 justify-end"><div class="max-w-md w-full focus-within:ring-2 focus-within:ring-primary rounded-lg bg-surface-container-low border border-outline-variant px-4 flex items-center gap-2"><span class="material-symbols-outlined text-on-surface-variant">search</span><input class="bg-transparent border-none focus:ring-0 w-full py-2.5 font-body-md text-body-md" placeholder="Pesquisar tecnologia..." type="text"></div><div class="flex items-center gap-4 ml-8"><button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md hover:opacity-90 shadow-md transition-all">Login</button></div></div></header>
+<main class="max-w-max-content-width mx-auto px-container-padding py-stack-lg pt-20">
+<!-- Breadcrumb & Title Section -->
+<div class="mb-stack-md flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant mb-2">
+<a class="hover:text-primary" href="#">Vitrine</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Educação 4.0</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Simulador de Braço Robótico VR</span>
+</nav>
+<h2 class="text-display-lg font-display-lg text-on-surface">Simulador de Braço Robótico VR</h2>
+<div class="flex items-center gap-4 mt-2">
+<span class="bg-surface-container-high text-secondary px-3 py-1 rounded-full text-label-md font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                        Tecnologia Validada
+                    </span>
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        Atualizado em 15 de Outubro, 2023
+                    </span>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="flex gap-3">
+<a class="bg-primary text-on-primary px-6 py-3 rounded-lg font-headline-sm text-headline-sm flex items-center gap-2 hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                    Acessar Plataforma
+                </a>
+<a class="bg-surface border border-primary text-primary px-6 py-3 rounded-lg font-headline-sm text-headline-sm flex items-center gap-2 hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+                    Repositório Git
+                </a>
+</div>
+</div>
+<!-- Hero Bento Grid -->
+<div class="bento-grid mb-stack-lg">
+<!-- Main Video Player -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden group relative">
+<div class="aspect-video w-full bg-inverse-surface relative flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A cinematic still showing a high-tech robotic arm being controlled through a virtual reality interface. A user wearing a sleek VR headset is partially visible in a dimly lit, futuristic laboratory with blue and orange neon light accents. The robotic arm is highly detailed with visible metal components and glowing sensors, creating an atmosphere of advanced technological innovation and industrial progress." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoG0VOuPNPwJG5LIUPqli1S6esBlngJOGeuT2cWGb80vInrqIX2h_sBRjPChtzVd3FQI8I7ncywNVGOrNlVO7iwu7f3OWu7Hr7oKsyTqVOV9oZwDoRM0xvkCRpxhlUJ9QXBlAszcBROMCnumfbYATjJsEgMPWZ7GODuVFVBDyE2r7m-2MdMXJHdx53UH542IC6AgaXx3FF7fMhVhIAgzljDFoEksQmZ9XmAEWpPGTqT3lMR_fCJ36nbvCANOxed3qkVRd_UdtxDus">
+<button class="z-10 bg-primary/90 text-on-primary p-6 rounded-full transform group-hover:scale-110 transition-transform shadow-xl">
+<span class="material-symbols-outlined !text-[48px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-white font-headline-sm text-headline-sm">Demonstração: Operação Assistida VR</p>
+</div>
+</div>
+</div>
+<!-- Technical Summary -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant flex-1">
+<h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">info</span>
+                        Visão Geral
+                    </h3>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                        Este simulador oferece um ambiente de treinamento seguro e altamente fiel para operadores de braços robóticos industriais. Utilizando motores de física avançados e feedback tátil, os alunos podem praticar sequências complexas de montagem e manutenção preventiva sem riscos ao equipamento real.
+                    </p>
+<div class="mt-6 grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-3 rounded-lg">
+<span class="text-label-md font-label-md text-on-surface-variant block">Latência</span>
+<span class="text-headline-sm font-headline-sm text-primary">&lt; 10ms</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg">
+<span class="text-label-md font-label-md text-on-surface-variant block">Precisão</span>
+<span class="text-headline-sm font-headline-sm text-primary">0.05mm</span>
+</div>
+</div>
+</div>
+<div class="bg-secondary text-on-secondary p-6 rounded-xl flex items-center justify-between">
+<div>
+<p class="text-label-md font-label-md opacity-80">Desenvolvido por</p>
+<p class="text-headline-sm font-headline-sm">Unidade de Inovação SENAI</p>
+</div>
+<span class="material-symbols-outlined text-[40px] opacity-20">biotech</span>
+</div>
+</div>
+</div>
+<!-- Features & Documentation -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-stack-lg">
+<!-- Features Column -->
+<div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-5 bg-surface-container-lowest rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-3" style="font-variation-settings: 'FILL' 1;">vrpano</span>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">Imersão Total</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Compatível com os principais headsets do mercado (Meta Quest, HTC Vive e Windows MR).</p>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-3" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">Análise de Dados</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Relatórios detalhados de performance do usuário com detecção de erros em tempo real.</p>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-3" style="font-variation-settings: 'FILL' 1;">hub</span>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">Multi-dispositivo</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Integração nativa com controladores PLC físicos para treinamento híbrido.</p>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-3" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">Sync na Nuvem</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Sincronização de progresso e cenários personalizados entre diferentes laboratórios.</p>
+</div>
+</div>
+<!-- Documentation Cards Stack -->
+<div class="bg-surface-container p-6 rounded-xl flex flex-col gap-4">
+<h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">folder_open</span>
+                    Documentação
+                </h3>
+<a class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant flex items-center gap-3 group hover:border-primary transition-colors" href="#">
+<div class="w-10 h-10 bg-on-primary-container rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-body-md font-bold text-on-surface">Manual do Usuário</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">PDF, 12MB</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">download</span>
+</a>
+<a class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant flex items-center gap-3 group hover:border-primary transition-colors" href="#">
+<div class="w-10 h-10 bg-on-primary-container rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">settings_input_component</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-body-md font-bold text-on-surface">Especificações Técnicas</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">v2.4 Final</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">download</span>
+</a>
+<a class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant flex items-center gap-3 group hover:border-primary transition-colors" href="#">
+<div class="w-10 h-10 bg-on-primary-container rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-body-md font-bold text-on-surface">Planos de Aula</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Educação Básica</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">download</span>
+</a>
+</div>
+</div>
+<!-- Contact Section -->
+<section class="bg-inverse-surface rounded-2xl overflow-hidden relative p-12 text-center md:text-left flex flex-col md:flex-row items-center gap-8">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-br from-primary to-secondary transform rotate-12 scale-150"></div>
+</div>
+<div class="z-10 flex-1">
+<h2 class="text-display-lg font-display-lg text-white mb-4">Interessado nesta tecnologia?</h2>
+<p class="text-body-lg font-body-lg text-surface-variant max-w-2xl">
+                    Nossa equipe técnica está pronta para ajudar na implementação desta solução em sua unidade ou empresa. Solicite uma demonstração personalizada.
+                </p>
+</div>
+<div class="z-10 w-full md:w-auto bg-surface p-6 rounded-xl border border-white/10 shadow-2xl">
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-6">Fale com um consultor</h4>
+<div class="space-y-4">
+<div class="flex flex-col text-left">
+<label class="text-label-md font-label-md text-on-surface-variant mb-1">E-mail Corporativo</label>
+<input class="border-outline-variant rounded focus:border-primary focus:ring-primary text-body-md" placeholder="nome@exemplo.com.br" type="email">
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">
+                        Enviar Solicitação
+                    </button>
+<div class="flex items-center justify-center gap-4 pt-2">
+<a class="text-primary hover:underline text-body-sm font-body-sm flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">phone</span>
+                            0800 642 1000
+                        </a>
+<span class="text-outline-variant">|</span>
+<a class="text-primary hover:underline text-body-sm font-body-sm flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+                            WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant py-12 mt-stack-lg">
+<div class="max-w-max-content-width mx-auto px-container-padding flex flex-col md:flex-row justify-between items-start gap-12">
+<div>
+<h3 class="text-headline-sm font-headline-sm font-black text-on-surface mb-4">SENAI</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xs">
+                    Inovação &amp; Tecnologia para a indústria brasileira. O maior complexo de educação profissional da América Latina.
+                </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div>
+<h4 class="text-label-md font-label-md text-primary uppercase mb-4">Ecossistema</h4>
+<ul class="space-y-2 text-body-sm font-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary" href="#">Indústria</a></li>
+<li class=""><a class="hover:text-primary" href="#">Cursos</a></li>
+<li class=""><a class="hover:text-primary" href="#">Serviços</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-primary uppercase mb-4">Legal</h4>
+<ul class="space-y-2 text-body-sm font-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary" href="#">Privacidade</a></li>
+<li class=""><a class="hover:text-primary" href="#">Termos</a></li>
+<li class=""><a class="hover:text-primary" href="#">Segurança</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-primary uppercase mb-4">Contato</h4>
+<ul class="space-y-2 text-body-sm font-body-sm text-on-surface-variant">
+<li class=""><a class="hover:text-primary" href="#">Suporte</a></li>
+<li class=""><a class="hover:text-primary" href="#">Ouvidoria</a></li>
+<li class=""><a class="hover:text-primary" href="#">Imprensa</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-max-content-width mx-auto px-container-padding mt-12 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-body-sm font-body-sm text-on-surface-variant">
+<p class="">© 2023 SENAI. Todos os direitos reservados.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined">social_leaderboard</span>
+<span class="material-symbols-outlined">language</span>
+<span class="material-symbols-outlined">share</span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for download icons
+        document.querySelectorAll('a[href="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Action triggered: ' + this.innerText.split('\n')[0]);
+            });
+        });
+
+        // Hover effect for the video player
+        const playBtn = document.querySelector('.group button');
+        const videoImage = document.querySelector('.group img');
+        
+        if (playBtn) {
+            playBtn.parentElement.addEventListener('mouseenter', () => {
+                videoImage.style.transform = 'scale(1.05)';
+                videoImage.style.transition = 'transform 0.5s ease-out';
+            });
+            playBtn.parentElement.addEventListener('mouseleave', () => {
+                videoImage.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body></html>
